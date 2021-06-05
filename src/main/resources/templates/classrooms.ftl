@@ -7,7 +7,8 @@
     <title>Rooms</title>
 </head>
 <body>
-<h3>List of Rooms</h3>
+<center><h3>List of Rooms</h3></center>
+<center>
 <table class="table table-dark table-sm" style="width:40%" align="centre">
     <thead class="table-light">
         <th>ID</th>
@@ -22,5 +23,6 @@
         </tr>
     </#list>
 </table>
+</center>
 </body>
 </html>
