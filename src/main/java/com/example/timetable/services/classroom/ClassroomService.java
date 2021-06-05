@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClassroomService {
@@ -27,5 +28,16 @@ public class ClassroomService {
     }
     public List<Classroom> getAll(){
         return classrooms;
+    }
+
+    private List<Classroom> classrooms2=classrooms;
+
+    public List<Classroom> reNew(){
+        return classrooms2;
+    }
+
+    public void delete(String id) {
+        classrooms = classrooms.stream().filter(room->!room.getId().equals(id))
+                .collect(Collectors.toList());
     }
 }

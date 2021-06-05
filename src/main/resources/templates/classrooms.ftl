@@ -14,15 +14,19 @@
         <th>ID</th>
         <th>Name</th>
         <th>Capacity</th>
+        <th>Delete</th>
     </thead>
     <#list rooms as room>
         <tr>
             <td>${room.id}</td>
             <td>${room.name}</td>
             <td>${room.capacity}</td>
+            <td><button><a href="/ui/rooms/delete/${room.id}">Delete</a></button></td>
         </tr>
     </#list>
 </table>
 </center>
+<center><button><a href="/index.html">back</a></button></center>
+<center><button><a href="/ui/rooms/renew">reNew</a></button></center>
 </body>
 </html>
