@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class ClassroomService {
     private List<Classroom> classrooms;
-
+    private List<Classroom> classrooms2;
     @PostConstruct
     void init(){
          classrooms = new ArrayList<>(
@@ -25,14 +25,14 @@ public class ClassroomService {
                         new Classroom("6", "Mmelogy", 666)
                 )
         );
+         classrooms2=classrooms;
     }
     public List<Classroom> getAll(){
         return classrooms;
     }
 
-    private List<Classroom> classrooms2=classrooms;
-
     public List<Classroom> reNew(){
+        classrooms=classrooms2;
         return classrooms2;
     }
 
