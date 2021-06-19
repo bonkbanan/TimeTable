@@ -1,17 +1,13 @@
-package com.example.timetable.model;
+package com.example.timetable.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
-public class Classroom {
-    @Id
+public class RoomForm {
     private String id;
     private String name;
     private Integer capacity;

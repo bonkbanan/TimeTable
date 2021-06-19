@@ -1,18 +1,24 @@
 package com.example.timetable.services.classroom;
 
 import com.example.timetable.model.Classroom;
+import com.example.timetable.repository.ClassroomRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 public class ClassroomService {
     private List<Classroom> classrooms;
-    private List<Classroom> classrooms2;
+
+    @Autowired
+    ClassroomRepository repository;
+
     @PostConstruct
     void init(){
          classrooms = new ArrayList<>(
@@ -25,19 +31,30 @@ public class ClassroomService {
                         new Classroom("6", "Mmelogy", 666)
                 )
         );
-         classrooms2=classrooms;
+         //repository.saveAll(classrooms);
+
     }
     public List<Classroom> getAll(){
-        return classrooms;
+        return repository.findAll();
     }
 
-    public List<Classroom> reNew(){
-        classrooms=classrooms2;
-        return classrooms2;
+    public void reNew(){
+        repository.saveAll(classrooms);
     }
 
     public void delete(String id) {
-        classrooms = classrooms.stream().filter(room->!room.getId().equals(id))
-                .collect(Collectors.toList());
+        repository.deleteById(id);
+    }
+
+    public void create(Classroom classroom) {
+        repository.save(classroom);
+    }
+
+    public Classroom get(String id) {
+        return repository.findById(id).get();
+    }
+
+    public void update(Classroom classroom) {
+        repository.save(classroom);
     }
 }
